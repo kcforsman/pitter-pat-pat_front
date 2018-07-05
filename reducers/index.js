@@ -1,9 +1,9 @@
 import { SET_VIEW } from '../actions/view.js'
 
-function setViewState(state = [], action) {
+function setViewState(state = 'HOME', action) {
   switch (action.type) {
     case SET_VIEW:
-      return action.filter
+      return action.view
     default:
       return state
   }

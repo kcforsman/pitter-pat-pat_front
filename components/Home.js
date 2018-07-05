@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+
+import ViewLink from '../containers/ViewLink.js';
 
 export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.homeContainer}>
         <Text>Pitter Pat Pat</Text>
-        <TouchableOpacity onPress={()=>{}} style={styles.link}>
-          <Text style={styles.text}>Testing Phase</Text>
-        </TouchableOpacity>
+        <ViewLink view="PHASE" title="TEST PHASE"/>
       </View>
     );
   }
