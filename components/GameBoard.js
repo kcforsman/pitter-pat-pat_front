@@ -46,7 +46,9 @@ export default class GameBoard extends React.Component {
 const styles = StyleSheet.create({
   boardContainer: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   optionsContainer: {
     flex: 1,

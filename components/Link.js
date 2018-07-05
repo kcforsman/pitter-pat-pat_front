@@ -1,10 +1,19 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class Link extends React.Component {
+  static propTypes = {
+    view: PropTypes.string.isRequired,
+    onLinkPress: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+  }
+  onLinkPress = () => {
+    this.props.onLinkPress(this.props.view)
+  }
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress} style={styles.link}>
+      <TouchableOpacity onPress={this.onLinkPress} style={styles.link}>
         <Text style={styles.text}>{this.props.title}</Text>
       </TouchableOpacity>
     );

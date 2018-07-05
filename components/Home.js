@@ -1,14 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
-import ViewLink from '../containers/ViewLink.js';
+import Link from './Link.js';
 
 export default class Home extends React.Component {
+  static propTypes = {
+    changeView: PropTypes.func.isRequired
+  }
   render() {
     return (
       <View style={styles.homeContainer}>
         <Text>Pitter Pat Pat</Text>
-        <ViewLink view="PHASE" title="TEST PHASE"/>
+        <Link view="PHASE" title="TEST PHASE" onLinkPress={this.props.changeView}/>
       </View>
     );
   }

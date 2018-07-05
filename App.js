@@ -1,34 +1,39 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+// import { Provider } from 'react-redux';
+// import { createStore } from 'redux';
 
-import setViewState from './reducers/index.js';
 import Home from './components/Home.js';
 import Phase from './components/Phase.js';
 
-const store = createStore({setViewState});
 
 export default class App extends React.Component {
-  seeState = () => { console.log(store)}
-  renderView = () => {
-    switch (store.getState()) {
-      case 'HOME':
-        return <Home />
-      case 'PHASE':
-        return <Phase />
-      default:
-        return <Home />
+  constructor() {
+    super();
+
+    this.state = {
+      view: 'HOME'
     }
   }
+  setView = (newView) => {
+    this.setState({view: newView})
+  }
+  renderView = () => {
+    switch (this.state.view) {
+      case 'HOME':
+        return <Home changeView={ this.setView }/>
+      case 'PHASE':
+        return <Phase changeView={ this.setView }/>
+      default:
+        return <Home changeView={ this.setView }/>
+    }
+  }
+
   render() {
     return (
-      <Provider store={store}>
-        <View style={ styles.mainContainer }>
-          { this.renderView() }
-          { this.seeState() }
-        </View>
-      </Provider>
+      <View style={ styles.mainContainer }>
+        { this.renderView() }
+      </View>
     );
   }
 }
