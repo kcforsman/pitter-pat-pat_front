@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import GameBoard from './GameBoard.js';
+import Link from './Link.js'
 
 export default class Phase extends React.Component {
 
@@ -17,6 +18,9 @@ export default class Phase extends React.Component {
     };
     return (
       <View style={styles.phaseContainer}>
+        <View>
+          <Link view="HOME" title="TEST HOME" onLinkPress={this.props.changeView}/>
+        </View>
         <GameBoard pattern={ tempPattern }/>
       </View>
     );
