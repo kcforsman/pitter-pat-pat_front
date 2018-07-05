@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import Home from './components/Home.js';
 import Phase from './components/Phase.js';
 
 export default class App extends React.Component {
@@ -8,6 +9,7 @@ export default class App extends React.Component {
     return (
       <View style={ styles.mainContainer }>
         <Phase />
+        <Home />
       </View>
     );
   }
