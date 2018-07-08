@@ -5,6 +5,27 @@ import PropTypes from 'prop-types';
 import GameBoard from './GameBoard.js';
 import Link from './Link.js'
 
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import { createStore, applyMiddleware } from 'redux'
+import { fetchPattern } from '../actions/actions.js'
+import getPattern from '../reducers/reducers.js'
+
+const loggerMiddleware = createLogger();
+
+const store = createStore(
+  getPattern,
+  applyMiddleware(
+    thunkMiddleware, // lets us dispatch() functions
+    loggerMiddleware // neat middleware that logs actions
+  )
+);
+console.log(store.getState());
+
+
+store.dispatch(fetchPattern());
+console.log(store.getState());
+
 export default class Phase extends React.Component {
 
   static propTypes = {

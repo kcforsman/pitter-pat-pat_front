@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-// import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
 
 import Home from './components/Home.js';
 import Phase from './components/Phase.js';
