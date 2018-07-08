@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 export default class Element extends React.Component {
   static propTypes = {
-    element: PropTypes.object
+    element: PropTypes.object,
+    type: PropTypes.string.isRequired,
   };
 
   renderCharacter = () => {
-    if (this.props.element.type === 'Symbol' || this.props.element.type === 'Question') {
+    if (this.props.type === 'Letter' || this.props.type === 'Question' || this.props.type === 'Shape') {
       return this.props.element.symbol;
     } else {
       return ' ';
@@ -17,7 +18,7 @@ export default class Element extends React.Component {
 
   setStyles = () => {
     const styles = {
-      backgroundColor: this.props.element.type === 'Color' ? this.props.element.color : 'black',
+      backgroundColor: this.props.type === 'Color' ? this.props.element.color : 'black',
       color: 'white',
       height: 50,
       width: 50,

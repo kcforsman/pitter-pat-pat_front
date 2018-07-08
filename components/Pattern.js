@@ -19,17 +19,22 @@ export default class Pattern extends React.Component {
 
   renderElements = () => {
     return (
-      this.props.pattern.sequence.map( (element, index) => {
-        if (element === '?') {
+      this.props.pattern.patternQuestion.map( (element, index) => {
+        if (element === -1) {
           const questionElement = {
-            type: 'Question',
             color: 'black',
             shape: 'square',
             symbol: '?'
           }
-          return(<Element element={ questionElement } key={index}/>);
+          return(<Element element={ questionElement } type='Question' key={index}/>);
         } else {
-          return(<Element element={ this.props.pattern.elements[element] } key={index}/>);
+          return(
+            <Element
+              element={ this.props.pattern.elements[element] }
+              type={this.props.pattern.type}
+              key={index}
+            />
+          );
         }
       })
     );

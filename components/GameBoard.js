@@ -23,7 +23,7 @@ export default class GameBoard extends React.Component {
       this.props.pattern.elements.map( (element, index) => {
         return(
           <TouchableOpacity key={ index } onPress={()=>{}}>
-            <Element element={ element }/>
+            <Element element={ element } type={this.props.pattern.type}/>
           </TouchableOpacity>
         );
       })
@@ -34,7 +34,7 @@ export default class GameBoard extends React.Component {
     return (
       <View style={ styles.boardContainer }>
         <Pattern pattern={ this.props.pattern }/>
-        <Text>This is some Question?</Text>
+        <Text>Complete the Pattern</Text>
         <View style={ styles.optionsContainer }>
           { this.renderOptions() }
         </View>
