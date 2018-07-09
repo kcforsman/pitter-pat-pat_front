@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import GameBoard from './GameBoard.js';
+import CurrentGameBoard from '../containers/CurrentGameBoard.js';
 import Link from './Link.js'
 
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
 import { fetchPattern } from '../actions/actions.js'
 import getPattern from '../reducers/reducers.js'
 
@@ -20,11 +21,8 @@ const store = createStore(
     loggerMiddleware // neat middleware that logs actions
   )
 );
-console.log(store.getState());
-
-
 store.dispatch(fetchPattern());
-console.log(store.getState());
+// console.log(store.getState());
 
 export default class Phase extends React.Component {
 
@@ -60,12 +58,12 @@ export default class Phase extends React.Component {
       answer: [0],
     };
     return (
-      <View style={styles.phaseContainer} >
-        <View>
-          <Link view="HOME" title="TEST HOME" onLinkPress={this.props.changeView}/>
+        <View style={styles.phaseContainer} >
+          <View>
+            <Link view="HOME" title="TEST HOME" onLinkPress={this.props.changeView}/>
+          </View>
+          <CurrentGameBoard store={ store }/>
         </View>
-        <GameBoard pattern={ tempPattern } />
-      </View>
     );
   }
 }

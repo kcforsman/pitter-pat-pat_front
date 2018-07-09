@@ -12,7 +12,6 @@ import Element from './Element.js';
 //     sequence: PropTypes.arrayOf(PropTypes.integer).isRequired
 //   )
 // }
-
 export default class GameBoard extends React.Component {
   static propTypes = {
     pattern: PropTypes.object.isRequired
@@ -23,12 +22,16 @@ export default class GameBoard extends React.Component {
       this.props.pattern.elements.map( (element, index) => {
         return(
           <TouchableOpacity key={ index } onPress={()=>{}}>
-            <Element element={ element } type={this.props.pattern.type}/>
+            <Element element={ element } type={this.props.pattern.type[0]}/>
           </TouchableOpacity>
         );
       })
     )
   };
+
+  seeProps = () => {
+    console.log(this.props.pattern);
+  }
 
   render() {
     return (
@@ -38,6 +41,7 @@ export default class GameBoard extends React.Component {
         <View style={ styles.optionsContainer }>
           { this.renderOptions() }
         </View>
+        { this.seeProps() }
       </View>
     );
   }

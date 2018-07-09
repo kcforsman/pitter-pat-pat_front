@@ -31,7 +31,7 @@ export default class Pattern extends React.Component {
           return(
             <Element
               element={ this.props.pattern.elements[element] }
-              type={this.props.pattern.type}
+              type={this.props.pattern.type[0]}
               key={index}
             />
           );
