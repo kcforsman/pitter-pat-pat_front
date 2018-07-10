@@ -5,7 +5,7 @@ import { fetchPattern } from '../actions/actions.js';
 import GameBoard from '../components/GameBoard';
 
 const mapStateToProps = (state) => {
-  console.log({location: "mapStateToProps", state});
+  console.log({location: "mapStateToProps", state: state});
   return {
     pattern: state.pattern
   }
@@ -13,13 +13,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAnswerPress: () => {
-      dispatch(fetchPattern())
-    }
+    onAnswerPress: () => { dispatch(fetchPattern()) }
   }
 }
 const CurrentGameBoard = connect(
   mapStateToProps,
   mapDispatchToProps
 )(GameBoard)
+
 export default CurrentGameBoard;

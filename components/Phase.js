@@ -21,7 +21,7 @@ const store = createStore(
   )
 );
 store.dispatch(fetchPattern());
-// console.log({location: "@ initial store", store.getState()});
+// console.log({location: "@ initial store", store: store.getState()});
 
 export default class Phase extends React.Component {
 
@@ -30,7 +30,7 @@ export default class Phase extends React.Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:8080/patterns")
+    fetch("http://localhost:8080/patterns/1")
       .then((response) => response.json())
       .then((responseJson) => {
         // console.log({location: "componentDidMount", responseJson});

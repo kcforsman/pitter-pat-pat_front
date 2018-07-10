@@ -26,6 +26,10 @@ export default class GameBoard extends React.Component {
     }
   }
 
+  seeProps = () => {
+    console.log({location: 'GameBoard Props', props: this.props.pattern});
+  }
+
 
   renderOptions = () => {
     return(
