@@ -1,11 +1,11 @@
 export const REQUEST_PATTERN = 'REQUEST_PATTERN';
 export const RECEIVE_PATTERN = 'RECEIVE_PATTERN';
 
-function requestPattern() {
-  return {type: REQUEST_PATTERN};
+function requestPattern(patternId) {
+  return { type: REQUEST_PATTERN, patternId };
 }
-function receivePattern(json) {
-  return { type: RECEIVE_PATTERN, pattern: json, receivedAt: Date.now() };
+function receivePattern(json, patternId) {
+  return { type: RECEIVE_PATTERN, pattern: json, patternId, receivedAt: Date.now() };
 }
 
 // export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
@@ -16,15 +16,14 @@ function receivePattern(json) {
 //   }
 // }
 
-export function fetchPattern() {
+export function fetchPattern(patternId) {
   return function (dispatch) {
-    dispatch(requestPattern());
+    dispatch(requestPattern(patternId));
 
-    return fetch("http://localhost:8080/patterns/1")
+    return fetch(`http://localhost:8080/patterns/${patternId}`)
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log({location: "in Action.js", responseJson: responseJson})
-        dispatch(receivePattern(responseJson));
+        dispatch(receivePattern(responseJson, patternId));
       })
       .catch((error) => {
         console.error(error);

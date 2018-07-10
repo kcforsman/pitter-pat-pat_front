@@ -22,7 +22,7 @@ export default class GameBoard extends React.Component {
     console.log(`I am in isAnswer INDEX: ${index}`)
     if (this.props.pattern.answer[0] === index) {
       console.log("I am the Answer");
-      this.props.onAnswerPress();
+      this.props.onAnswerPress(this.props.patternId);
     }
   }
 
@@ -38,6 +38,7 @@ export default class GameBoard extends React.Component {
         return(
           <TouchableOpacity key={ index } onPress={() => this.isAnswer(index)}>
             <Element element={ element } type={this.props.pattern.type[0]}/>
+            {this.seeProps()}
           </TouchableOpacity>
         );
       })

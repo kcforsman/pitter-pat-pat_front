@@ -15,7 +15,8 @@ function getPattern(
   state = {
     isFetching: false,
     didInvalidate: false,
-    pattern: {}
+    pattern: {},
+    patternId: 1,
   },
   action
 ) {
@@ -23,14 +24,16 @@ function getPattern(
     case REQUEST_PATTERN:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false
+        didInvalidate: false,
+        patternId: action.patternId,
       })
     case RECEIVE_PATTERN:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
         pattern: action.pattern,
-        lastUpdated: action.receivedAt
+        patternId: action.patternId,
+        lastUpdated: action.receivedAt,
       })
     default:
       return state

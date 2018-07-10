@@ -7,13 +7,17 @@ import GameBoard from '../components/GameBoard';
 const mapStateToProps = (state) => {
   console.log({location: "mapStateToProps", state: state});
   return {
-    pattern: state.pattern
+    pattern: state.pattern,
+    patternId: state.patternId,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAnswerPress: () => { dispatch(fetchPattern()) }
+    onAnswerPress: (id) => {
+      id = id === 3 ? 1 : id + 1;
+      dispatch(fetchPattern(id))
+    }
   }
 }
 const CurrentGameBoard = connect(

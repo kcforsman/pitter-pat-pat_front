@@ -20,8 +20,8 @@ const store = createStore(
     loggerMiddleware // neat middleware that logs actions
   )
 );
-store.dispatch(fetchPattern());
-// console.log({location: "@ initial store", store: store.getState()});
+store.dispatch(fetchPattern(1));
+console.log({location: "@ initial store", store: store.getState()});
 
 export default class Phase extends React.Component {
 
