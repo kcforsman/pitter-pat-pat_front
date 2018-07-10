@@ -5,6 +5,7 @@ import { fetchPattern } from '../actions/actions.js';
 import GameBoard from '../components/GameBoard';
 
 const mapStateToProps = (state) => {
+  console.log({location: "mapStateToProps", state});
   return {
     pattern: state.pattern
   }

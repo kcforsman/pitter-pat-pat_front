@@ -8,7 +8,6 @@ import Link from './Link.js'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
 import { fetchPattern } from '../actions/actions.js'
 import getPattern from '../reducers/reducers.js'
 
@@ -22,7 +21,7 @@ const store = createStore(
   )
 );
 store.dispatch(fetchPattern());
-// console.log(store.getState());
+// console.log({location: "@ initial store", store.getState()});
 
 export default class Phase extends React.Component {
 
@@ -34,7 +33,7 @@ export default class Phase extends React.Component {
     fetch("http://localhost:8080/patterns")
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
+        // console.log({location: "componentDidMount", responseJson});
         return responseJson;
       })
       .catch((error) => {
@@ -42,21 +41,7 @@ export default class Phase extends React.Component {
       });
   }
 
-  renderGameBoard = () => {
-    return this.state.pattern ? <GameBoard pattern={ this.state.pattern }/> : ' ';
-  }
-
   render() {
-    // temporary hard-coded object for pattern while only working in the frontend
-    const tempPattern = {
-      elements: [
-        {color: 'red', symbol: 'A', shape: 'square'},
-        {color: 'blue', symbol: 'B', shape: 'square'}
-      ],
-      type: 'Color',
-      patternQuestion: [1, 0, 1, 0, 1, -1],
-      answer: [0],
-    };
     return (
         <View style={styles.phaseContainer} >
           <View>

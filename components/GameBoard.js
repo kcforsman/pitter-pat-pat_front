@@ -14,14 +14,25 @@ import Element from './Element.js';
 // }
 export default class GameBoard extends React.Component {
   static propTypes = {
-    pattern: PropTypes.object.isRequired
+    pattern: PropTypes.object.isRequired,
+    onAnswerPress: PropTypes.func.isRequired
   }
+
+  isAnswer = (index) => {
+    console.log(`I am in isAnswer INDEX: ${index}`)
+    if (this.props.pattern.answer[0] === index) {
+      console.log("I am the Answer");
+      this.props.onAnswerPress();
+    }
+  }
+
 
   renderOptions = () => {
     return(
       this.props.pattern.elements.map( (element, index) => {
+        console.log(`I am the INDEX: ${index}`)
         return(
-          <TouchableOpacity key={ index } onPress={()=>{}}>
+          <TouchableOpacity key={ index } onPress={() => this.isAnswer(index)}>
             <Element element={ element } type={this.props.pattern.type[0]}/>
           </TouchableOpacity>
         );
@@ -30,7 +41,7 @@ export default class GameBoard extends React.Component {
   };
 
   seeProps = () => {
-    console.log(this.props.pattern);
+    // console.log({location: "GameBoard", props: this.props});
   }
 
   render() {
@@ -41,7 +52,6 @@ export default class GameBoard extends React.Component {
         <View style={ styles.optionsContainer }>
           { this.renderOptions() }
         </View>
-        { this.seeProps() }
       </View>
     );
   }
