@@ -15,7 +15,8 @@ import Element from './Element.js';
 export default class GameBoard extends React.Component {
   static propTypes = {
     pattern: PropTypes.object.isRequired,
-    onAnswerPress: PropTypes.func.isRequired
+    onAnswerPress: PropTypes.func.isRequired,
+    patternId: PropTypes.number,
   }
 
   isAnswer = (index) => {

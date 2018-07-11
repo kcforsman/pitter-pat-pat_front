@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAnswerPress: (id) => {
-      id = id === 3 ? 1 : id + 1;
+      id = id === 6 ? 1 : id + 1;
       dispatch(fetchPattern(id))
     }
   }
