@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Pattern from './Pattern.js';
-import Element from './Element.js';
 
 // static propTypes = {
 //   pattern: PropTypes.shapeOf(
@@ -19,27 +18,57 @@ export default class GameBoard extends React.Component {
     patternId: PropTypes.number,
   }
 
-  isAnswer = (index) => {
-    console.log(`I am in isAnswer INDEX: ${index}`)
-    if (this.props.pattern.answer[0] === index) {
+  isAnswer = (selectedSequence) => {
+    const answerSequence = this.props.pattern.answerSequences[0];
+    if (this.isSameSequence(selectedSequence, answerSequence)) {
       console.log("I am the Answer");
       this.props.onAnswerPress(this.props.patternId);
     }
+  }
+
+  isSameSequence = (sequence1, sequence2) => {
+    for (let i = 0; i < sequence1.length; i++) {
+      if (sequence1[i] !== sequence2[i]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   seeProps = () => {
     console.log({location: 'GameBoard Props', props: this.props.pattern});
   }
 
-
-  renderOptions = () => {
+  renderQuestionPatterns = () => {
     return(
-      this.props.pattern.elements.map( (element, index) => {
-        console.log(`I am the INDEX: ${index}`)
+      this.props.pattern.questionSequences.map( (sequence, index) => {
+        const pattern = {
+          patternSequence: this.props.pattern.questionSequences[index],
+          types: this.props.pattern.questionTypes,
+          elements: this.props.pattern.questionElements,
+        }
         return(
-          <TouchableOpacity key={ index } onPress={() => this.isAnswer(index)}>
-            <Element element={ element } type={this.props.pattern.type[0]}/>
-            {this.seeProps()}
+          <Pattern key={ index } pattern={ pattern } />
+        );
+      })
+    )
+  };
+
+  renderChoicePatterns = () => {
+    return(
+      this.props.pattern.choiceSequences.map( (element, index) => {
+        const pattern = {
+          patternSequence: this.props.pattern.choiceSequences[index],
+          types: this.props.pattern.answerTypes,
+          elements: this.props.pattern.answerElements,
+        }
+        console.log(this.props.pattern.choiceSequences[index]);
+        return(
+          <TouchableOpacity key={ index } onPress={() => this.isAnswer(this.props.pattern.choiceSequences[index])}>
+            <Pattern
+              key={ index }
+              pattern={ pattern }
+            />
           </TouchableOpacity>
         );
       })
@@ -47,16 +76,17 @@ export default class GameBoard extends React.Component {
   };
 
   seeProps = () => {
-    // console.log({location: "GameBoard", props: this.props});
+    console.log({location: "GameBoard", props: this.props.pattern});
   }
-
   render() {
     return (
       <View style={ styles.boardContainer }>
-        <Pattern pattern={ this.props.pattern }/>
+        <View style={ styles.optionsContainer }>
+          { this.renderQuestionPatterns() }
+        </View>
         <Text>Complete the Pattern</Text>
         <View style={ styles.optionsContainer }>
-          { this.renderOptions() }
+          { this.renderChoicePatterns() }
         </View>
       </View>
     );

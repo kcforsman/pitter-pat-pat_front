@@ -47,7 +47,7 @@ export default class Phase extends React.Component {
           <View>
             <Link view="HOME" title="TEST HOME" onLinkPress={this.props.changeView}/>
           </View>
-          <CurrentGameBoard store={ store }/>
+          <CurrentGameBoard store={ store } gameType="tapElement"/>
         </View>
     );
   }

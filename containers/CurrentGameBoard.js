@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { fetchPattern } from '../actions/actions.js';
 import GameBoard from '../components/GameBoard';
 
-const mapStateToProps = (state) => {
-  console.log({location: "mapStateToProps", state: state});
+const mapStateToProps = (state, props) => {
+  // console.log({location: "mapStateToProps", state: state});
   return {
+    gameType: props.gameType,
     pattern: state.pattern,
     patternId: state.patternId,
   }
