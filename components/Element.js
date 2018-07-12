@@ -18,8 +18,12 @@ export default class Element extends React.Component {
 
   setStyles = () => {
     const styles = {
-      backgroundColor: this.props.type === 'Color' ? this.props.element.color : 'black',
-      color: 'white',
+      backgroundColor: this.props.type === 'Color' ? this.props.element.color : 'white',
+      color: 'darkgreen',
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      fontSize: 36,
+      fontWeight: 'bold',
       height: 50,
       width: 50,
     };

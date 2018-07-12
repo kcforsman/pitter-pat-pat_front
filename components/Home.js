@@ -11,7 +11,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.homeContainer}>
-        <Text>Pitter Pat Pat</Text>
+        <Text style={styles.text}>Pitter Pat Pat</Text>
+        <View style={styles.whiteSpace}></View>
         <Link view="PHASE" title="TEST PHASE" onLinkPress={this.props.changeView}/>
       </View>
     );
@@ -21,13 +22,17 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
-  },
-  link: {
-    width: 125,
-    height: 30,
-    backgroundColor: 'green',
+    flexDirection: 'column',
+    width: '95%',
+    height: '95%',
+    alignItems: 'center',
   },
   text: {
-    color: 'white',
+    color: 'green',
+    fontSize: 45,
+    fontWeight: 'bold',
+  },
+  whiteSpace: {
+    height: '10%',
   }
 });

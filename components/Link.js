@@ -22,11 +22,17 @@ export default class Link extends React.Component {
 
 const styles = StyleSheet.create({
   link: {
-    width: 125,
+    width: '30%',
     height: 30,
+    borderRadius: 50,
+    justifyContent: 'center',
     backgroundColor: 'green',
   },
   text: {
     color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   }
 });
