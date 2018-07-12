@@ -30,7 +30,9 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={ styles.mainContainer }>
+        <View style={ styles.whiteSpace }></View>
         { this.renderView() }
+        <View style={ styles.whiteSpace }></View>
       </View>
     );
   }
@@ -39,5 +41,12 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
+  whiteSpace: {
+    height: '5%',
   }
 });

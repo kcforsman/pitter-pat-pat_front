@@ -47,7 +47,8 @@ export default class Phase extends React.Component {
           <View>
             <Link view="HOME" title="TEST HOME" onLinkPress={this.props.changeView}/>
           </View>
-          <CurrentGameBoard store={ store } gameType="tapElement"/>
+          <View style={ styles.whiteSpace }/>
+          <CurrentGameBoard store={ store } gameDirections="Complete the Pattern"/>
         </View>
     );
   }
@@ -56,5 +57,11 @@ export default class Phase extends React.Component {
 const styles = StyleSheet.create({
   phaseContainer: {
     flex: 1,
+    flexDirection: 'column',
+    width: '95%',
+    height: '95%',
+  },
+  whiteSpace: {
+    height: '10%',
   }
 });

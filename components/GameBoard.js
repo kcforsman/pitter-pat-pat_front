@@ -15,7 +15,8 @@ export default class GameBoard extends React.Component {
   static propTypes = {
     pattern: PropTypes.object.isRequired,
     onAnswerPress: PropTypes.func.isRequired,
-    patternId: PropTypes.number,
+    patternId: PropTypes.number.isRequired,
+    gameDirections: PropTypes.string.isRequired,
   }
 
   isAnswer = (selectedSequence) => {
@@ -64,7 +65,11 @@ export default class GameBoard extends React.Component {
         }
         console.log(this.props.pattern.choiceSequences[index]);
         return(
-          <TouchableOpacity key={ index } onPress={() => this.isAnswer(this.props.pattern.choiceSequences[index])}>
+          <TouchableOpacity
+            style={ styles.touchables }
+            key={ index }
+            onPress={() => this.isAnswer(this.props.pattern.choiceSequences[index])}
+          >
             <Pattern
               key={ index }
               pattern={ pattern }
@@ -81,10 +86,10 @@ export default class GameBoard extends React.Component {
   render() {
     return (
       <View style={ styles.boardContainer }>
-        <View style={ styles.optionsContainer }>
+        <View style={ styles.questionsContainer }>
           { this.renderQuestionPatterns() }
         </View>
-        <Text>Complete the Pattern</Text>
+        <Text style={styles.text}>{this.props.gameDirections}</Text>
         <View style={ styles.optionsContainer }>
           { this.renderChoicePatterns() }
         </View>
@@ -96,12 +101,35 @@ export default class GameBoard extends React.Component {
 const styles = StyleSheet.create({
   boardContainer: {
     flex: 1,
+    width: '100%',
+    height: '80%',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
+  text: {
+    height: '25%',
+    alignItems: 'center',
+    color: 'green',
+    fontWeight: 'bold',
+    fontSize: 28,
+  },
+  questionsContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '90%',
+    height: '25%',
+  },
   optionsContainer: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: '80%',
+    height: '25%',
+    justifyContent: 'space-around',
+  },
+  touchables: {
+    width: 50,
+    height: 50,
   }
 });

@@ -7,9 +7,10 @@ import GameBoard from '../components/GameBoard';
 const mapStateToProps = (state, props) => {
   // console.log({location: "mapStateToProps", state: state});
   return {
-    gameType: props.gameType,
+    gameType: state.gameType,
     pattern: state.pattern,
     patternId: state.patternId,
+    gameDirections: props.gameDirections,
   }
 }
 
