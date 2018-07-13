@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Phase from './Phase';
+import PhaseContainer from '../containers/PhaseContainer';
 import Home from './Home'
 
 export default class App extends React.Component {
@@ -16,7 +16,7 @@ export default class App extends React.Component {
       case 'HOME':
         return <Home changeView={ this.props.onSetView }/>
       case 'PHASE':
-        return <Phase changeView={ this.props.onSetView }/>
+        return <PhaseContainer changeView={ this.props.onSetView }/>
       default:
         return <Home changeView={ this.props.onSetView }/>
     }

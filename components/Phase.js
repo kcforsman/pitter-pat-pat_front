@@ -3,11 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import CurrentGameBoard from '../containers/CurrentGameBoard.js';
-import Link from './Link.js'
+import LinkContainer from '../containers/LinkContainer.js'
 
 export default class Phase extends React.Component {
 
   static propTypes = {
+    phaseId: PropTypes.number.isRequired,
     changeView: PropTypes.func.isRequired
   }
 
@@ -15,7 +16,7 @@ export default class Phase extends React.Component {
     return (
         <View style={styles.phaseContainer} >
           <View>
-            <Link view="HOME" title="TEST HOME" onLinkPress={this.props.changeView}/>
+            <LinkContainer view="HOME" title="Home" onLinkPress={this.props.changeView}/>
           </View>
           <View style={ styles.whiteSpace }/>
           <CurrentGameBoard gameDirections="Complete the Pattern"/>

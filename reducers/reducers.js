@@ -43,7 +43,7 @@ function getPattern(
   switch (action.type) {
     case REQUEST_FIRST_PATTERN:
       return Object.assign({}, state, {
-        isFetching: false,
+        isFetching: true,
         didInvalidate: false,
         patternId: 1,
         phaseId: action.phaseId,
