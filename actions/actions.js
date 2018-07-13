@@ -1,10 +1,36 @@
+export const REQUEST_FIRST_PATTERN = 'REQUEST_FIRST_PATTERN';
+export const RECEIVE_FIRST_PATTERN = 'RECEIVE_FIRST_PATTERN';
+
+function requestFirstPatternInPhase(phaseId) {
+  return {type: REQUEST_FIRST_PATTERN, phaseId, patternId: 1}
+}
+
+export function receiveFirstPatternInPhase(json, phaseId, patternId) {
+  return {type: RECEIVE_FIRST_PATTERN, pattern: json, phaseId, patternId, receivedAt: Date.now()}
+}
+
+export function fetchFirstPatternInPhase(phaseId) {
+  return function (dispatch) {
+    dispatch(requestFirstPatternInPhase(phaseId));
+    // return fetch(`http://192.168.1.191:8080/patterns/${patternId}`)
+    return fetch(`http://localhost:8080/phase/${phaseId}/patterns/1`)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        dispatch(receiveFirstPatternInPhase(responseJson, phaseId, 1));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+}
+
 export const REQUEST_PATTERN = 'REQUEST_PATTERN';
 export const RECEIVE_PATTERN = 'RECEIVE_PATTERN';
 
-function requestPattern(patternId) {
+function requestNextPattern(patternId) {
   return { type: REQUEST_PATTERN, patternId };
 }
-function receivePattern(json, patternId) {
+function receiveNextPattern(json, patternId) {
   return { type: RECEIVE_PATTERN, pattern: json, patternId, receivedAt: Date.now() };
 }
 
@@ -16,14 +42,14 @@ function receivePattern(json, patternId) {
 //   }
 // }
 
-export function fetchPattern(patternId) {
+export function fetchPattern(phaseId, patternId) {
   return function (dispatch) {
-    dispatch(requestPattern(patternId));
+    dispatch(requestNextPattern(patternId));
     // return fetch(`http://192.168.1.191:8080/patterns/${patternId}`)
-    return fetch(`http://localhost:8080/phase/1/patterns/${patternId}`)
+    return fetch(`http://localhost:8080/phase/${phaseId}/patterns/${patternId}`)
       .then((response) => response.json())
       .then((responseJson) => {
-        dispatch(receivePattern(responseJson, patternId));
+        dispatch(receiveNextPattern(responseJson, patternId));
       })
       .catch((error) => {
         console.error(error);
