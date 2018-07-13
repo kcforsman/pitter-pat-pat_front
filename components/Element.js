@@ -6,6 +6,7 @@ export default class Element extends React.Component {
   static propTypes = {
     element: PropTypes.object,
     type: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
   };
 
   renderCharacter = () => {
@@ -17,15 +18,18 @@ export default class Element extends React.Component {
   };
 
   setStyles = () => {
+    const width = this.props.location == 'question' ? 50 : 30;
+    const height = this.props.location == 'question' ? 50 : 30;
+    const fontSize = this.props.location == 'question' ? 36 : 30;
     const styles = {
       backgroundColor: this.props.type === 'Color' ? this.props.element.color : 'white',
       color: 'darkgreen',
       textAlign: 'center',
       textAlignVertical: 'center',
-      fontSize: 36,
+      fontSize: fontSize,
       fontWeight: 'bold',
-      height: 50,
-      width: 50,
+      height: height,
+      width: width,
     };
 
     return styles;

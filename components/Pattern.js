@@ -14,7 +14,8 @@ import Element from './Element.js';
 
 export default class Pattern extends React.Component {
   static propTypes = {
-    pattern: PropTypes.object.isRequired
+    pattern: PropTypes.object.isRequired,
+    location: PropTypes.string.isRequired
   }
 
   renderElements = () => {
@@ -26,13 +27,14 @@ export default class Pattern extends React.Component {
             shape: 'square',
             symbol: '?'
           }
-          return(<Element element={ questionElement } type='Question' key={index}/>);
+          return(<Element element={ questionElement } type='Question' key={index} location={this.props.location}/>);
         } else {
           return(
             <Element
               element={ this.props.pattern.elements[element] }
               type={this.props.pattern.types[0]}
               key={index}
+              location={this.props.location}
             />
           );
         }

@@ -49,12 +49,20 @@ export default class GameBoard extends React.Component {
           elements: this.props.pattern.questionElements,
         }
         return(
-          <Pattern key={ index } pattern={ pattern } />
+          <Pattern key={ index } pattern={ pattern } location="question"/>
         );
       })
     )
   };
 
+  optionStyles = () => {
+    const width = this.props.pattern.gameType === 'tapElement' ? 50 : 290;
+    const style = {
+      width: width,
+      height: 50,
+    };
+    return style;
+  };
   renderChoicePatterns = () => {
     return(
       this.props.pattern.choiceSequences.map( (element, index) => {
@@ -66,13 +74,14 @@ export default class GameBoard extends React.Component {
         console.log(this.props.pattern.choiceSequences[index]);
         return(
           <TouchableOpacity
-            style={ styles.touchables }
+            style={ this.optionStyles() }
             key={ index }
             onPress={() => this.isAnswer(this.props.pattern.choiceSequences[index])}
           >
             <Pattern
               key={ index }
               pattern={ pattern }
+              location="choice"
             />
           </TouchableOpacity>
         );
@@ -124,12 +133,9 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flex: 1,
     flexDirection: 'row',
-    width: '80%',
-    height: '25%',
+    flexWrap: 'wrap',
+    width: '100%',
+    height: '30%',
     justifyContent: 'space-around',
   },
-  touchables: {
-    width: 50,
-    height: 50,
-  }
 });
