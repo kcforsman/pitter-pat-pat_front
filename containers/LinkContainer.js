@@ -7,10 +7,10 @@ import Link from '../components/Link';
 const mapStateToProps = (state, props) => {
   // console.log({location: "mapStateToProps", state: state});
   return {
-    phaseId: props.phaseId,
-    title: state.title,
+    title: props.title,
     view: props.view,
-    onLinkPress: props.onLinkPress,
+    phaseId: props.phaseId,
+    onPressSetView: props.onLinkPress,
   }
 }
 

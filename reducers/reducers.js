@@ -1,5 +1,7 @@
 // import { combineReducers } from 'redux'
 import {
+  REQUEST_FIRST_PATTERN,
+  RECEIVE_FIRST_PATTERN,
   REQUEST_PATTERN,
   RECEIVE_PATTERN
 } from '../actions/actions.js'
@@ -21,11 +23,28 @@ function getPattern(
   action
 ) {
   switch (action.type) {
+    case REQUEST_FIRST_PATTERN:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false,
+        patternId: 1,
+        phaseId: action.phaseId,
+      })
+    case RECEIVE_FIRST_PATTERN:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        pattern: action.pattern,
+        patternId: action.patternId,
+        phaseId: action.phaseId,
+        lastUpdated: action.receivedAt,
+      })
     case REQUEST_PATTERN:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false,
         patternId: action.patternId,
+        phaseId: action.phaseId,
       })
     case RECEIVE_PATTERN:
       return Object.assign({}, state, {
@@ -33,6 +52,7 @@ function getPattern(
         didInvalidate: false,
         pattern: action.pattern,
         patternId: action.patternId,
+        phaseId: action.phaseId,
         lastUpdated: action.receivedAt,
       })
     default:

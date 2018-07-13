@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Home from './components/Home.js';
-import Phase from './components/Phase.js';
+import ViewContainer from './containers/ViewContainer';
 
-import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
-import { createStore, applyMiddleware } from 'redux'
-import { fetchPattern } from '../actions/actions.js'
-import getPattern from '../reducers/reducers.js'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import getPattern from './reducers/reducers.js';
 
 const loggerMiddleware = createLogger();
 
@@ -19,38 +18,17 @@ const store = createStore(
     loggerMiddleware // neat middleware that logs actions
   )
 );
-store.dispatch(fetchPattern(1));
+
 console.log({location: "@ initial store", store: store.getState()});
 
 export default class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      view: 'HOME'
-    }
-  }
-  setView = (newView) => {
-    this.setState({view: newView})
-  }
-  renderView = () => {
-    switch (this.state.view) {
-      case 'HOME':
-        return <Home changeView={ this.setView }/>
-      case 'PHASE':
-        return <Phase changeView={ this.setView }/>
-      default:
-        return <Home changeView={ this.setView }/>
-    }
-  }
-
   render() {
     return (
-      <View style={ styles.mainContainer }>
-        <View style={ styles.whiteSpace }></View>
-        { this.renderView() }
-        <View style={ styles.whiteSpace }></View>
-      </View>
+      <Provider store={store}>
+        <View style={ styles.mainContainer }>
+          <ViewContainer />
+        </View>
+      </Provider>
     );
   }
 }
@@ -63,7 +41,4 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
   },
-  whiteSpace: {
-    height: '5%',
-  }
 });

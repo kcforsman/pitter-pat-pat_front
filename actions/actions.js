@@ -1,8 +1,14 @@
+export const SET_VIEW = 'SET_VIEW';
+
+export function setView(view) {
+  return { type: SET_VIEW, view }
+}
+
 export const REQUEST_FIRST_PATTERN = 'REQUEST_FIRST_PATTERN';
 export const RECEIVE_FIRST_PATTERN = 'RECEIVE_FIRST_PATTERN';
 
 function requestFirstPatternInPhase(phaseId) {
-  return {type: REQUEST_FIRST_PATTERN, phaseId, patternId: 1}
+  return {type: REQUEST_FIRST_PATTERN, phaseId}
 }
 
 export function receiveFirstPatternInPhase(json, phaseId, patternId) {

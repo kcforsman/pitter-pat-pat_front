@@ -5,12 +5,19 @@ import PropTypes from 'prop-types';
 export default class Link extends React.Component {
   static propTypes = {
     view: PropTypes.string.isRequired,
-    onLinkPress: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
+    onPressSetView: PropTypes.func.isRequired,
+    phaseId: PropTypes.number,
+    onPressSetPhase: PropTypes.func.isRequired,
   }
+
   onLinkPress = () => {
-    this.props.onLinkPress(this.props.view)
+    this.props.onPressSetView(this.props.view)
+    if (this.props.phaseId) {
+      this.props.onPressSetPhase(this.props.phaseId)
+    }
   }
+
   render() {
     return (
       <TouchableOpacity onPress={this.onLinkPress} style={styles.link}>
