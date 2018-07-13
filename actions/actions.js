@@ -20,7 +20,7 @@ export function fetchPattern(patternId) {
   return function (dispatch) {
     dispatch(requestPattern(patternId));
     // return fetch(`http://192.168.1.191:8080/patterns/${patternId}`)
-    return fetch(`http://localhost:8080/patterns/${patternId}`)
+    return fetch(`http://localhost:8080/phase/1/patterns/${patternId}`)
       .then((response) => response.json())
       .then((responseJson) => {
         dispatch(receivePattern(responseJson, patternId));

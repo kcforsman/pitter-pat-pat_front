@@ -4,6 +4,23 @@ import { StyleSheet, View } from 'react-native';
 import Home from './components/Home.js';
 import Phase from './components/Phase.js';
 
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import { createStore, applyMiddleware } from 'redux'
+import { fetchPattern } from '../actions/actions.js'
+import getPattern from '../reducers/reducers.js'
+
+const loggerMiddleware = createLogger();
+
+const store = createStore(
+  getPattern,
+  applyMiddleware(
+    thunkMiddleware, // lets us dispatch() functions
+    loggerMiddleware // neat middleware that logs actions
+  )
+);
+store.dispatch(fetchPattern(1));
+console.log({location: "@ initial store", store: store.getState()});
 
 export default class App extends React.Component {
   constructor() {
