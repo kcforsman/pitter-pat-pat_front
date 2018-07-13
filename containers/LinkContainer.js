@@ -5,7 +5,7 @@ import { setPhase } from '../actions/actions.js';
 import Link from '../components/Link';
 
 const mapStateToProps = (state, props) => {
-  // console.log({location: "mapStateToProps", state: state});
+  // console.log({location: "mapStateToProps in LinkContainer", state: state});
   return {
     title: props.title,
     view: props.view,

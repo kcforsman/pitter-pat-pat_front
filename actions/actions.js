@@ -4,6 +4,12 @@ export function setView(view) {
   return { type: SET_VIEW, view }
 }
 
+export const SET_PHASE = 'SET_PHASE';
+
+export function setPhase(phaseId) {
+  return { type: SET_PHASE, phaseId }
+}
+
 export const REQUEST_FIRST_PATTERN = 'REQUEST_FIRST_PATTERN';
 export const RECEIVE_FIRST_PATTERN = 'RECEIVE_FIRST_PATTERN';
 

@@ -7,12 +7,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import getPattern from './reducers/reducers.js';
+import rootReducer from './reducers/reducers.js';
 
 const loggerMiddleware = createLogger();
 
 const store = createStore(
-  getPattern,
+  rootReducer,
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware // neat middleware that logs actions

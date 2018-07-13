@@ -15,6 +15,7 @@ export default class Home extends React.Component {
         <Text style={styles.text}>Pitter Pat Pat</Text>
         <View style={styles.whiteSpace}></View>
         <LinkContainer view="PHASE" title="Phase One" phaseId={1} onLinkPress={this.props.changeView}/>
+        <View style={styles.smallWhiteSpace}></View>
         <LinkContainer view="PHASE" title="Phase Two" phaseId={2} onLinkPress={this.props.changeView}/>
       </View>
     );
@@ -36,5 +37,8 @@ const styles = StyleSheet.create({
   },
   whiteSpace: {
     height: '10%',
+  },
+  smallWhiteSpace: {
+    height: '3%',
   }
 });

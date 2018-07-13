@@ -7,7 +7,7 @@ import ViewScreen from '../components/ViewScreen';
 const mapStateToProps = (state) => {
   // console.log({location: "mapStateToProps in ViewContainer", state: state});
   return {
-    view: state.view,
+    view: state.setView.view,
   }
 }
 
