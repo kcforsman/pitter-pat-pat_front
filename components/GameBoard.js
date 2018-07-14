@@ -13,17 +13,19 @@ import Pattern from './Pattern.js';
 // }
 export default class GameBoard extends React.Component {
   static propTypes = {
-    pattern: PropTypes.object.isRequired,
+    pattern: PropTypes.object,
+    isFetching: PropTypes.bool.isRequired,
     onAnswerPress: PropTypes.func.isRequired,
-    patternId: PropTypes.number.isRequired,
-    gameDirections: PropTypes.string.isRequired,
+    patternId: PropTypes.number,
+    phaseId: PropTypes.number,
+    gameDirections: PropTypes.string,
   }
 
   isAnswer = (selectedSequence) => {
     const answerSequence = this.props.pattern.answerSequences[0];
     if (this.isSameSequence(selectedSequence, answerSequence)) {
-      console.log("I am the Answer");
-      this.props.onAnswerPress(this.props.patternId);
+      // console.log("I am the Answer");
+      this.props.onAnswerPress(this.props.phaseId, this.props.patternId);
     }
   }
 
@@ -89,19 +91,29 @@ export default class GameBoard extends React.Component {
     )
   };
 
+  isFetching = () => {
+    if (!this.props.isFetching) {
+      return (
+        <View style={ styles.boardContainer }>
+          <View style={ styles.questionsContainer }>
+            { this.renderQuestionPatterns() }
+          </View>
+          <Text style={styles.text}>{this.props.gameDirections}</Text>
+          <View style={ styles.optionsContainer }>
+            { this.renderChoicePatterns() }
+          </View>
+        </View>
+      );
+    }
+  }
+
   seeProps = () => {
-    console.log({location: "GameBoard", props: this.props.pattern});
+    console.log({location: "in GameBoard Presentational", props: this.props.pattern.questionSequences});
   }
   render() {
     return (
       <View style={ styles.boardContainer }>
-        <View style={ styles.questionsContainer }>
-          { this.renderQuestionPatterns() }
-        </View>
-        <Text style={styles.text}>{this.props.gameDirections}</Text>
-        <View style={ styles.optionsContainer }>
-          { this.renderChoicePatterns() }
-        </View>
+        {this.isFetching()}
       </View>
     );
   }

@@ -4,11 +4,6 @@ export function setView(view) {
   return { type: SET_VIEW, view }
 }
 
-export const SET_PHASE = 'SET_PHASE';
-
-export function setPhase(phaseId) {
-  return { type: SET_PHASE, phaseId }
-}
 
 export const REQUEST_FIRST_PATTERN = 'REQUEST_FIRST_PATTERN';
 export const RECEIVE_FIRST_PATTERN = 'RECEIVE_FIRST_PATTERN';
@@ -39,11 +34,11 @@ export function fetchFirstPatternInPhase(phaseId) {
 export const REQUEST_PATTERN = 'REQUEST_PATTERN';
 export const RECEIVE_PATTERN = 'RECEIVE_PATTERN';
 
-function requestNextPattern(patternId) {
-  return { type: REQUEST_PATTERN, patternId };
+function requestNextPattern(phaseId, patternId) {
+  return { type: REQUEST_PATTERN, phaseId, patternId };
 }
-function receiveNextPattern(json, patternId) {
-  return { type: RECEIVE_PATTERN, pattern: json, patternId, receivedAt: Date.now() };
+function receiveNextPattern(json, phaseId, patternId) {
+  return { type: RECEIVE_PATTERN, pattern: json, phaseId, patternId, receivedAt: Date.now() };
 }
 
 // export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
@@ -55,13 +50,14 @@ function receiveNextPattern(json, patternId) {
 // }
 
 export function fetchPattern(phaseId, patternId) {
+  console.log(`THIS IS FETCH INPUT: PHASEiD - ${phaseId} and PATTERNiD = ${patternId}`)
   return function (dispatch) {
-    dispatch(requestNextPattern(patternId));
+    dispatch(requestNextPattern(phaseId, patternId));
     // return fetch(`http://192.168.1.191:8080/patterns/${patternId}`)
     return fetch(`http://localhost:8080/phase/${phaseId}/patterns/${patternId}`)
       .then((response) => response.json())
       .then((responseJson) => {
-        dispatch(receiveNextPattern(responseJson, patternId));
+        dispatch(receiveNextPattern(responseJson, phaseId, patternId));
       })
       .catch((error) => {
         console.error(error);

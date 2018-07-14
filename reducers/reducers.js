@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 import {
   SET_VIEW,
-  SET_PHASE,
   REQUEST_FIRST_PATTERN,
   RECEIVE_FIRST_PATTERN,
   REQUEST_PATTERN,
@@ -14,17 +13,6 @@ function setView( state = {view: 'HOME'}, action ) {
     case SET_VIEW:
       return Object.assign({}, state, {
         view: action.view,
-      })
-    default:
-      return state
-  }
-}
-
-function setPhase( state = {}, action ) {
-  switch (action.type) {
-    case SET_PHASE:
-      return Object.assign({}, state, {
-        phaseId: action.phaseId,
       })
     default:
       return state
@@ -78,4 +66,4 @@ function getPattern(
   }
 }
 
-export default combineReducers({setView, setPhase, getPattern});
+export default combineReducers({setView, getPattern});

@@ -5,7 +5,7 @@ import { setView } from '../actions/actions.js';
 import ViewScreen from '../components/ViewScreen';
 
 const mapStateToProps = (state) => {
-  // console.log({location: "mapStateToProps in ViewContainer", state: state});
+  console.log({location: "mapStateToProps in ViewContainer", state: state.getPattern.isFetching});
   return {
     view: state.setView.view,
   }

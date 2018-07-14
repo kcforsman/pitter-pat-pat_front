@@ -8,8 +8,7 @@ import LinkContainer from '../containers/LinkContainer.js'
 export default class Phase extends React.Component {
 
   static propTypes = {
-    phaseId: PropTypes.number.isRequired,
-    changeView: PropTypes.func.isRequired
+    changeView: PropTypes.func.isRequired,
   }
 
   render() {
@@ -19,7 +18,7 @@ export default class Phase extends React.Component {
             <LinkContainer view="HOME" title="Home" onLinkPress={this.props.changeView}/>
           </View>
           <View style={ styles.whiteSpace }/>
-          <CurrentGameBoard gameDirections="Complete the Pattern"/>
+          <CurrentGameBoard gameDirections="Complete the Pattern" />
         </View>
     );
   }
