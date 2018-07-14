@@ -1,16 +1,24 @@
-// import { combineReducers } from 'redux'
+import { combineReducers } from 'redux'
 import {
+  SET_VIEW,
+  REQUEST_FIRST_PATTERN,
+  RECEIVE_FIRST_PATTERN,
   REQUEST_PATTERN,
-  RECEIVE_PATTERN
+  RECEIVE_PATTERN,
 } from '../actions/actions.js'
-// function selectedSubreddit(state = 'reactjs', action) {
-//   switch (action.type) {
-//     case SELECT_SUBREDDIT:
-//       return action.subreddit
-//     default:
-//       return state
-//   }
-// }
+
+
+function setView( state = {view: 'HOME'}, action ) {
+  switch (action.type) {
+    case SET_VIEW:
+      return Object.assign({}, state, {
+        view: action.view,
+      })
+    default:
+      return state
+  }
+}
+
 function getPattern(
   state = {
     isFetching: false,
@@ -21,11 +29,28 @@ function getPattern(
   action
 ) {
   switch (action.type) {
+    case REQUEST_FIRST_PATTERN:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false,
+        patternId: 1,
+        phaseId: action.phaseId,
+      })
+    case RECEIVE_FIRST_PATTERN:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        pattern: action.pattern,
+        patternId: action.patternId,
+        phaseId: action.phaseId,
+        lastUpdated: action.receivedAt,
+      })
     case REQUEST_PATTERN:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false,
         patternId: action.patternId,
+        phaseId: action.phaseId,
       })
     case RECEIVE_PATTERN:
       return Object.assign({}, state, {
@@ -33,6 +58,7 @@ function getPattern(
         didInvalidate: false,
         pattern: action.pattern,
         patternId: action.patternId,
+        phaseId: action.phaseId,
         lastUpdated: action.receivedAt,
       })
     default:
@@ -40,4 +66,4 @@ function getPattern(
   }
 }
 
-export default getPattern
+export default combineReducers({setView, getPattern});

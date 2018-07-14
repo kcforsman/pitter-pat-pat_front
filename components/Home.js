@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Link from './Link.js';
+import LinkContainer from '../containers/LinkContainer.js';
 
 export default class Home extends React.Component {
   static propTypes = {
@@ -11,9 +11,12 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.homeContainer}>
+        <View style={styles.whiteSpace}></View>
         <Text style={styles.text}>Pitter Pat Pat</Text>
         <View style={styles.whiteSpace}></View>
-        <Link view="PHASE" title="TEST PHASE" onLinkPress={this.props.changeView}/>
+        <LinkContainer view="PHASE" title="Phase One" phaseId={1} onLinkPress={this.props.changeView}/>
+        <View style={styles.smallWhiteSpace}></View>
+        <LinkContainer view="PHASE" title="Phase Two" phaseId={2} onLinkPress={this.props.changeView}/>
       </View>
     );
   }
@@ -34,5 +37,8 @@ const styles = StyleSheet.create({
   },
   whiteSpace: {
     height: '10%',
+  },
+  smallWhiteSpace: {
+    height: '3%',
   }
 });

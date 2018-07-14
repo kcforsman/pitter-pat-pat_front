@@ -5,20 +5,23 @@ import { fetchPattern } from '../actions/actions.js';
 import GameBoard from '../components/GameBoard';
 
 const mapStateToProps = (state, props) => {
-  // console.log({location: "mapStateToProps", state: state});
+  // console.log({LOCATION: "mapStateToProps in CurrentGameBoard", state: {PATTERN: state.getPattern}});
+  console.log("THIS IS A NEW RENDER OF CurrentGameBoard")
   return {
-    gameType: state.gameType,
-    pattern: state.pattern,
-    patternId: state.patternId,
+    isFetching: state.getPattern.isFetching,
+    pattern: state.getPattern.pattern,
+    phaseId: state.getPattern.phaseId,
+    patternId: state.getPattern.patternId,
     gameDirections: props.gameDirections,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
+  console.log({location: "mapDispatchToProps in CurrentGameBoard", PROPS: props})
   return {
-    onAnswerPress: (id) => {
-      id = id === 6 ? 1 : id + 1;
-      dispatch(fetchPattern(id))
+    onAnswerPress: (phaseId, patternId) => {
+      patternId = patternId === 6 ? 1 : patternId + 1;
+      dispatch(fetchPattern(phaseId, patternId))
     }
   }
 }
