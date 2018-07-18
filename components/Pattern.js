@@ -15,7 +15,8 @@ import Element from './Element.js';
 export default class Pattern extends React.Component {
   static propTypes = {
     pattern: PropTypes.object.isRequired,
-    location: PropTypes.string.isRequired
+    location: PropTypes.string.isRequired,
+    gameType: PropTypes.string,
   }
 
   renderElements = () => {
@@ -35,6 +36,7 @@ export default class Pattern extends React.Component {
               type={this.props.pattern.types[0]}
               key={index}
               location={this.props.location}
+              gameType={this.props.gameType}
             />
           );
         }

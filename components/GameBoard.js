@@ -51,20 +51,28 @@ export default class GameBoard extends React.Component {
           elements: this.props.pattern.questionElements,
         }
         return(
-          <Pattern key={ index } pattern={ pattern } location="question"/>
+          <Pattern key={ index } pattern={ pattern } location="question" />
         );
       })
     )
   };
 
   optionStyles = () => {
-    const width = this.props.pattern.gameType === 'tapElement' ? 50 : 290;
+    let width = 0
+    if (this.props.pattern.gameType === 'tapElement') {
+      width = 50;
+    } else if (this.props.phaseId == 3) {
+      width = 150;
+    } else {
+      width = 290;
+    }
     const style = {
       width: width,
-      height: 50,
+      height: 60,
     };
     return style;
   };
+
   renderChoicePatterns = () => {
     return(
       this.props.pattern.choiceSequences.map( (element, index) => {
@@ -84,6 +92,7 @@ export default class GameBoard extends React.Component {
               key={ index }
               pattern={ pattern }
               location="choice"
+              gameType={this.props.pattern.gameType}
             />
           </TouchableOpacity>
         );
