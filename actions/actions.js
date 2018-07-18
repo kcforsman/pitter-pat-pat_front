@@ -19,8 +19,8 @@ export function receiveFirstPatternInPhase(json, phaseId, patternId) {
 export function fetchFirstPatternInPhase(phaseId) {
   return function (dispatch) {
     dispatch(requestFirstPatternInPhase(phaseId));
-    // return fetch(`http://192.168.1.191:8080/patterns/${patternId}`)
-    return fetch(`http://localhost:8080/phase/${phaseId}/patterns/1`)
+    return fetch(`https://pitter-pat-pat-api.herokuapp.com/phase/${phaseId}/patterns/1`)
+    // return fetch(`http://localhost:8080/phase/${phaseId}/patterns/1`)
       .then((response) => response.json())
       .then((responseJson) => {
         dispatch(receiveFirstPatternInPhase(responseJson, phaseId, 1));
@@ -53,8 +53,8 @@ export function fetchPattern(phaseId, patternId) {
   console.log(`THIS IS FETCH INPUT: PHASEiD - ${phaseId} and PATTERNiD = ${patternId}`)
   return function (dispatch) {
     dispatch(requestNextPattern(phaseId, patternId));
-    // return fetch(`http://192.168.1.191:8080/phase/${phaseId}/patterns/${patternId}`)
-    return fetch(`http://localhost:8080/phase/${phaseId}/patterns/${patternId}`)
+    return fetch(`https://pitter-pat-pat-api.herokuapp.com/phase/${phaseId}/patterns/${patternId}`)
+    // return fetch(`http://localhost:8080/phase/${phaseId}/patterns/${patternId}`)
       .then((response) => response.json())
       .then((responseJson) => {
         dispatch(receiveNextPattern(responseJson, phaseId, patternId));

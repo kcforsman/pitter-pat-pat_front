@@ -7,6 +7,17 @@ import {
   RECEIVE_PATTERN,
 } from '../actions/actions.js'
 
+const emptyState = {
+  phase: "",
+  gameType:"",
+  questionSequences:[],
+  choiceSequences:[],
+  answerSequences:[],
+  questionTypes:[],
+  questionElements:[],
+  answerTypes:[],
+  answerElements:[]
+}
 
 function setView( state = {view: 'HOME'}, action ) {
   switch (action.type) {
@@ -23,7 +34,7 @@ function getPattern(
   state = {
     isFetching: false,
     didInvalidate: false,
-    pattern: {},
+    pattern: emptyState,
     patternId: 1,
   },
   action
@@ -33,6 +44,7 @@ function getPattern(
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false,
+        pattern: emptyState,
         patternId: 1,
         phaseId: action.phaseId,
       })
@@ -49,6 +61,7 @@ function getPattern(
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false,
+        pattern: emptyState,
         patternId: action.patternId,
         phaseId: action.phaseId,
       })
