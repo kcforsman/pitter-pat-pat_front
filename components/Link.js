@@ -29,7 +29,7 @@ export default class Link extends React.Component {
 
 const styles = StyleSheet.create({
   link: {
-    width: '30%',
+    width: '50%',
     height: 30,
     borderRadius: 50,
     justifyContent: 'center',
