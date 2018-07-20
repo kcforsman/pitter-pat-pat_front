@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Pattern from './Pattern.js';
+import LoadingScreen from './LoadingScreen'
 
 // static propTypes = {
 //   pattern: PropTypes.shapeOf(
@@ -113,6 +114,8 @@ export default class GameBoard extends React.Component {
           </View>
         </View>
       );
+    } else {
+      return <LoadingScreen />;
     }
   }
 
