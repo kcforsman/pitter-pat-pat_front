@@ -18,14 +18,14 @@ export default class Logo extends React.Component {
           {
             toValue: 1,
             duration: 1500,
-            easing: Easing.linear
+            easing: Easing.in
         }),
         Animated.timing(
           this.rotateZ,
           {
             toValue: -1,
             duration: 1500,
-            easing: Easing.linear
+            easing: Easing.in
         }),
     ])).start();                        // Starts the animation
   }
@@ -33,12 +33,12 @@ export default class Logo extends React.Component {
   render() {
     const spinZ = this.rotateZ.interpolate({
       inputRange: [0, 1],
-      outputRange: ['-3deg', '3deg']
+      outputRange: ['-2.5deg', '2deg']
     });
     return (
       <View>
         <Animated.Image
-          source={require('../images/RainbowCat.png')}
+          source={require('../images/Logo.png')}
 
           style={{
               transform: [
