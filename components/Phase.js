@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import CurrentGameBoard from '../containers/CurrentGameBoard.js';
-import LinkContainer from '../containers/LinkContainer.js'
+import HomeLinkContainer from '../containers/HomeLinkContainer.js'
 
 export default class Phase extends React.Component {
 
@@ -15,7 +15,7 @@ export default class Phase extends React.Component {
     return (
         <View style={styles.phaseContainer} >
           <View>
-            <LinkContainer view="HOME" title="Home" onLinkPress={this.props.changeView}/>
+            <HomeLinkContainer title="Home" onLinkPress={this.props.changeView}/>
           </View>
           <View style={ styles.whiteSpace }/>
           <CurrentGameBoard gameDirections="Complete the Pattern" />
