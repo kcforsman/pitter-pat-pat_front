@@ -27,6 +27,8 @@ export default class GameBoard extends React.Component {
     if (this.isSameSequence(selectedSequence, answerSequence)) {
       // console.log("I am the Answer");
       this.props.onAnswerPress(this.props.phaseId, this.props.patternId);
+    } else {
+      alert("Wrong! Try Again");
     }
   }
 
