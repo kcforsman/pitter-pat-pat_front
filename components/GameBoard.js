@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Pattern from './Pattern.js';
@@ -25,10 +25,10 @@ export default class GameBoard extends React.Component {
   isAnswer = (selectedSequence) => {
     const answerSequence = this.props.pattern.answerSequences[0];
     if (this.isSameSequence(selectedSequence, answerSequence)) {
-      // console.log("I am the Answer");
+      Alert.alert("Correct", "Good Job! Purrrfect!");
       this.props.onAnswerPress(this.props.phaseId, this.props.patternId);
     } else {
-      alert("Wrong! Try Again");
+      Alert.alert("Wrong!", "Try Again");
     }
   }
 
