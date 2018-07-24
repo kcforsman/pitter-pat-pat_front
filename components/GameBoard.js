@@ -71,7 +71,7 @@ export default class GameBoard extends React.Component {
     }
     const style = {
       width: width,
-      height: 60,
+      height: 50,
     };
     return style;
   };
@@ -172,5 +172,6 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-around',
     alignItems: 'center',
+    alignContent: 'space-around',
   },
 });

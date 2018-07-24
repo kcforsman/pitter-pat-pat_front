@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Element from './Element.js';
@@ -43,22 +43,27 @@ export default class Pattern extends React.Component {
       })
     );
   }
-
+  renderPatternStyles = () => {
+    const patternStyles = {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
+    };
+    if (this.props.location == 'choice') {
+      // patternStyles.borderColor = 'lightgreen';
+      patternStyles.borderRadius = 50;
+      patternStyles.backgroundColor = 'darkgreen';
+    }
+    return patternStyles;
+  }
   render() {
     return (
-      <View style={styles.patternContainer} >
+      <View style={this.renderPatternStyles()} >
         { this.renderElements() }
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  patternContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    height: '100%',
-  }
-});
