@@ -84,14 +84,15 @@ export default class Element extends React.Component {
   };
 
   setTextStyles = () => {
-    const width = this.props.location == 'question' ? 50 : 30;
-    const height = this.props.location == 'question' ? 50 : 30;
-    const fontSize = this.props.location == 'question' ? 36 : 30;
+    const width = this.props.location == 'question'  || this.props.gameType == 'tapElement' ? 50 : 30;
+    const height = this.props.location == 'question' || this.props.gameType == 'tapElement' ? 60 : 40;
+    const fontSize = this.props.location == 'question' || this.props.gameType == 'tapElement' ? 36 : 30;
     const styles = {
-      color: 'darkgreen',
+      color: 'lightgreen',
       textAlign: 'center',
       textAlignVertical: 'center',
       fontSize: fontSize,
+      fontFamily: 'Chalkduster',
       fontWeight: 'bold',
       height: height,
       width: width,

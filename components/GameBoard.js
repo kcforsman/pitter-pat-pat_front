@@ -110,7 +110,9 @@ export default class GameBoard extends React.Component {
           <View style={ styles.questionsContainer }>
             { this.renderQuestionPatterns() }
           </View>
-          <Text style={styles.text}>{this.props.gameDirections}</Text>
+          <View style={styles.directionBorders}>
+            <Text style={styles.text}>{this.props.gameDirections}</Text>
+          </View>
           <View style={ styles.optionsContainer }>
             { this.renderChoicePatterns() }
           </View>
@@ -144,10 +146,18 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Chalkduster',
-    alignItems: 'center',
     color: 'lightgreen',
-    fontWeight: 'bold',
     fontSize: 28,
+  },
+  directionBorders: {
+    flexDirection: 'row',
+    borderColor: 'lightgreen',
+    width: '100%',
+    borderTopWidth: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 3,
+    height: 50,
   },
   questionsContainer: {
     flex: 1,
