@@ -140,12 +140,12 @@ const styles = StyleSheet.create({
     height: '80%',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
-    height: '25%',
+    fontFamily: 'Chalkduster',
     alignItems: 'center',
-    color: 'green',
+    color: 'lightgreen',
     fontWeight: 'bold',
     fontSize: 28,
   },
@@ -153,15 +153,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    width: '90%',
-    height: '25%',
+    width: '95%',
   },
   optionsContainer: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
-    height: '30%',
     justifyContent: 'space-around',
+    alignItems: 'center',
   },
 });
