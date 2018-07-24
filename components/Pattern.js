@@ -47,8 +47,6 @@ export default class Pattern extends React.Component {
     const patternStyles = {
       flex: 1,
       flexDirection: 'row',
-      justifyContent: 'space-around',
-      alignItems: 'center',
       width: '100%',
       height: '100%',
     };
