@@ -29,11 +29,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '95%',
     height: '95%',
-    borderWidth: 5,
   },
   homeLink: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginTop: 10,
+    shadowOffset: {width: 3, height: 3},
+    shadowOpacity: 1.0,
+    shadowColor: 'darkgreen',
   },
 });
