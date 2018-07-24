@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Animated, Easing } from 'react-native';
+import {TouchableOpacity, Alert, Animated, Easing } from 'react-native';
 
 
 export default class Logo extends React.Component {
@@ -36,7 +36,7 @@ export default class Logo extends React.Component {
       outputRange: ['-2.5deg', '2deg']
     });
     return (
-      <View>
+      <TouchableOpacity onPress={() => {Alert.alert('Meow', `Let's Play!`)}}>
         <Animated.Image
           source={require('../images/Logo.png')}
 
@@ -45,7 +45,7 @@ export default class Logo extends React.Component {
                 {rotateZ: spinZ},
                 {perspective: 1000},],
         }}/>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
