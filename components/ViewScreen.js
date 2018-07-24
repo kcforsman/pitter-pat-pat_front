@@ -33,7 +33,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    flexDirection: 'column',
     width: '100%',
     height: '100%',
     alignItems: 'center',

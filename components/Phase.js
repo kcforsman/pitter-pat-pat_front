@@ -14,10 +14,9 @@ export default class Phase extends React.Component {
   render() {
     return (
         <View style={styles.phaseContainer} >
-          <View>
+          <View style={styles.homeLink}>
             <HomeLinkContainer title="Home" onLinkPress={this.props.changeView}/>
           </View>
-          <View style={ styles.whiteSpace }/>
           <CurrentGameBoard gameDirections="Complete the Pattern" />
         </View>
     );
@@ -30,8 +29,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '95%',
     height: '95%',
+    borderWidth: 5,
   },
-  whiteSpace: {
-    height: '10%',
-  }
+  homeLink: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 10,
+  },
 });
