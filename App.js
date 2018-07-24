@@ -25,8 +25,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={ styles.mainContainer }>
-          <ViewContainer />
+        <View style={styles.background}>
+          <View style={styles.mainContainer}>
+            <ViewContainer />
+          </View>
         </View>
       </Provider>
     );
@@ -40,5 +42,17 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
+    backgroundColor: 'forestgreen',
+    borderWidth: 5,
+    borderColor: 'lightgreen',
+    borderRadius: 25,
+  },
+  background: {
+    flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: 'lightgreen',
   },
 });

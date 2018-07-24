@@ -29,14 +29,15 @@ export default class Link extends React.Component {
 
 const styles = StyleSheet.create({
   link: {
-    width: '50%',
-    height: 30,
+    width: '60%',
+    height: 35,
     borderRadius: 50,
     justifyContent: 'center',
-    backgroundColor: 'green',
+    backgroundColor: 'lightgreen',
   },
   text: {
-    color: 'white',
+    color: 'darkgreen',
+    fontFamily: 'Chalkduster',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',

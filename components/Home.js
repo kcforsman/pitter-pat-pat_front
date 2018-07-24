@@ -15,14 +15,17 @@ export default class Home extends React.Component {
         <View style={styles.imgContainer}>
           <Logo />
         </View>
-        <View style={styles.navContainer}>
+        <View style={styles.headerContainer}>
+          <View style={styles.whiteSpace}></View>
           <Text style={styles.text}>Pitter Pat Pat</Text>
-          <View style={styles.smallWhiteSpace}></View>
-          <LinkContainer view="PHASE" title="Phase One" phaseId={1} onLinkPress={this.props.changeView}/>
-          <View style={styles.smallWhiteSpace}></View>
-          <LinkContainer view="PHASE" title="Phase Two" phaseId={2} onLinkPress={this.props.changeView}/>
-          <View style={styles.smallWhiteSpace}></View>
-          <LinkContainer view="PHASE" title="Phase Three" phaseId={3} onLinkPress={this.props.changeView}/>
+          <View style={styles.whiteSpace}></View>
+          <View style={styles.navContainer}>
+            <LinkContainer view="PHASE" title="Phase One" phaseId={1} onLinkPress={this.props.changeView}/>
+            <View style={styles.smallWhiteSpace}></View>
+            <LinkContainer view="PHASE" title="Phase Two" phaseId={2} onLinkPress={this.props.changeView}/>
+            <View style={styles.smallWhiteSpace}></View>
+            <LinkContainer view="PHASE" title="Phase Three" phaseId={3} onLinkPress={this.props.changeView}/>
+          </View>
         </View>
       </View>
     );
@@ -36,15 +39,26 @@ const styles = StyleSheet.create({
     width: '95%',
     height: '95%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  navContainer: {
+  headerContainer: {
     flex: 1,
     flexDirection: 'column',
     width: '100%',
     height: '95%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    shadowOffset: {width: 5, height: 5},
+    shadowOpacity: 1.0,
+    shadowColor: 'darkgreen',
+  },
+  navContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   imgContainer: {
     flex: 1,
@@ -52,11 +66,16 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    color: 'green',
-    fontSize: 50,
-    fontWeight: 'bold',
+    color: 'lightgreen',
+    fontSize: 60,
+    fontFamily: 'Chalkduster',
+    textAlign: 'center',
+    textShadowRadius: 25,
+  },
+  whiteSpace: {
+    height: '4%',
   },
   smallWhiteSpace: {
-    height: '4%',
+    height: '8%',
   }
 });
