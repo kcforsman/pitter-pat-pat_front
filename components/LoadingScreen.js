@@ -14,16 +14,16 @@ export default class LoadingScreen extends React.Component {
         Animated.timing(
           this.rotateZ,
           {
-            toValue: -1,
-            duration: 1500,
-            easing: Easing.in
+            toValue: -3,
+            duration: 3000,
+            easing: Easing.linear
         }),
     ).start();                        // Starts the animation
   }
 
   render() {
     const spinZ = this.rotateZ.interpolate({
-      inputRange: [0, 5],
+      inputRange: [0, 3],
       outputRange: ['0deg', '360deg']
     });
     return (
