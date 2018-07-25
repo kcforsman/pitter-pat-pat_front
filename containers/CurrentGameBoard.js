@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchPattern } from '../actions/actions.js';
 import GameBoard from '../components/GameBoard';
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   // console.log({LOCATION: "mapStateToProps in CurrentGameBoard", state: {PATTERN: state.getPattern}});
   console.log("THIS IS A NEW RENDER OF CurrentGameBoard")
   return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state, props) => {
     pattern: state.getPattern.pattern,
     phaseId: state.getPattern.phaseId,
     patternId: state.getPattern.patternId,
-    gameDirections: props.gameDirections,
+    gameDirections: state.setGameDirections.gameDirections,
   }
 }
 

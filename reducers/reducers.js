@@ -5,6 +5,7 @@ import {
   RECEIVE_FIRST_PATTERN,
   REQUEST_PATTERN,
   RECEIVE_PATTERN,
+  SET_GAME_DIRECTIONS
 } from '../actions/actions.js'
 
 const emptyState = {
@@ -79,4 +80,20 @@ function getPattern(
   }
 }
 
-export default combineReducers({setView, getPattern});
+function setGameDirections(
+  state = {
+    gameDirections: 'Complete the Pattern'
+  },
+  action
+) {
+  switch (action.type) {
+    case SET_GAME_DIRECTIONS:
+      return Object.assign({}, state, {
+        gameDirections: action.directions
+      })
+    default:
+      return state
+  }
+}
+
+export default combineReducers({setView, getPattern, setGameDirections});
