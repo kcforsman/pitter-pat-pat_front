@@ -3,16 +3,20 @@ import { Image, TouchableOpacity } from 'react-native';
 
 import PropTypes from 'prop-types';
 
-export default class Logo extends React.Component {
+export default class HomeButton extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     onPressSetView: PropTypes.func.isRequired,
     phaseId: PropTypes.number,
     resetScore: PropTypes.func.isRequired,
+    setHighScore: PropTypes.func.isRequired,
+    currentScore: PropTypes.number.isRequired,
+    phaseHighScore: PropTypes.number.isRequired,
   }
 
   onLinkPress = () => {
     this.props.onPressSetView('HOME');
+    this.props.setHighScore(this.props.phaseId, this.props.currentScore, this.props.phaseHighScore);
     this.props.resetScore();
   }
   render() {

@@ -8,6 +8,7 @@ import {
   SET_GAME_DIRECTIONS,
   INCREMENT_SCORE,
   RESET_SCORE,
+  SET_HIGH_SCORE
 } from '../actions/actions.js'
 
 const emptyState = {
@@ -108,4 +109,16 @@ function setScore( state = { score: 0, }, action ) {
   }
 }
 
-export default combineReducers({setView, getPattern, setGameDirections, setScore});
+function setHighScores( state = [0, 0, 0], action ) {
+  console.log(state)
+  const newState = Object.assign([], state, state);
+  switch (action.type) {
+    case SET_HIGH_SCORE:
+      newState.setHighScores[action.phaseId - 1] = action.score;
+      return Object.assign({}, state, newState)
+    default:
+      return state
+  }
+}
+
+export default combineReducers({setView, getPattern, setGameDirections, setScore, setHighScores});

@@ -1,9 +1,7 @@
 // how to get api calls to state of GameBoard
 // can Redux be used here to update a GameBoard's state?
 import { connect } from 'react-redux';
-import { fetchPattern } from '../actions/actions.js';
-import { resetScore } from '../actions/actions.js';
-import { incrementScore } from '../actions/actions.js';
+import { fetchPattern, resetScore, incrementScore, setHighScore } from '../actions/actions.js';
 
 import GameBoard from '../components/GameBoard';
 
@@ -15,7 +13,7 @@ const mapStateToProps = (state) => {
     phaseId: state.getPattern.phaseId,
     patternId: state.getPattern.patternId,
     gameDirections: state.setGameDirections.gameDirections,
-    currentScore: state.setScore.score,
+    currentScore: state.setHighScores,
   }
 }
 
@@ -31,6 +29,11 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     incrementScore: (previousScore) => {
       dispatch(incrementScore(previousScore))
+    },
+    setHighScore: (phaseId, currentScore, currentHighScore) => {
+      if ( currentScore > currentHighScore) {
+        dispatch(setHighScore(phaseId, currentScore))
+      }
     }
   }
 }

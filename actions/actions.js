@@ -32,6 +32,11 @@ export function resetScore() {
   return { type: RESET_SCORE, score: 0 }
 }
 
+export const SET_HIGH_SCORE = 'SET_HIGH_SCORE';
+export function setHighScore(phaseId, score) {
+  return { type: SET_HIGH_SCORE,  phaseId, highScore: score }
+}
+
 export const REQUEST_FIRST_PATTERN = 'REQUEST_FIRST_PATTERN';
 function requestFirstPatternInPhase(phaseId) {
   return {type: REQUEST_FIRST_PATTERN, phaseId}
