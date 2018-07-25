@@ -8,11 +8,12 @@ export default class Logo extends React.Component {
     title: PropTypes.string.isRequired,
     onPressSetView: PropTypes.func.isRequired,
     phaseId: PropTypes.number,
-    onPressSetPhase: PropTypes.func.isRequired,
+    resetScore: PropTypes.func.isRequired,
   }
 
   onLinkPress = () => {
-    this.props.onPressSetView('HOME')
+    this.props.onPressSetView('HOME');
+    this.props.resetScore();
   }
   render() {
     return (
