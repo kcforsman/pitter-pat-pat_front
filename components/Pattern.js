@@ -47,13 +47,12 @@ export default class Pattern extends React.Component {
     const patternStyles = {
       flex: 1,
       flexDirection: 'row',
+      alignItems: 'center',
       width: '100%',
-      height: '100%',
     };
     if (this.props.location == 'choice') {
-      // patternStyles.borderColor = 'lightgreen';
       patternStyles.borderRadius = 50;
-      patternStyles.backgroundColor = 'darkgreen';
+      patternStyles.backgroundColor = 'lightgreen';
     }
     return patternStyles;
   }

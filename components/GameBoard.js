@@ -5,13 +5,6 @@ import PropTypes from 'prop-types';
 import Pattern from './Pattern.js';
 import LoadingScreen from './LoadingScreen'
 
-// static propTypes = {
-//   pattern: PropTypes.shapeOf(
-//     elements: PropTypes.arrayOf(PropTypes.object).isRequired,
-//     answer: PropTypes.arrayOf(PropTypes.integer).isRequired,
-//     sequence: PropTypes.arrayOf(PropTypes.integer).isRequired
-//   )
-// }
 export default class GameBoard extends React.Component {
   static propTypes = {
     pattern: PropTypes.object,
@@ -72,6 +65,7 @@ export default class GameBoard extends React.Component {
     const style = {
       width: width,
       height: 50,
+      alignItems: 'center',
     };
     return style;
   };
@@ -116,6 +110,7 @@ export default class GameBoard extends React.Component {
           <View style={ styles.optionsContainer }>
             { this.renderChoicePatterns() }
           </View>
+          <View style={{height: '3%', width: '100%', backgroundColor: 'darkgreen'}}></View>
         </View>
       );
     } else {
@@ -157,13 +152,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 3,
-    height: 50,
+    height: 45,
   },
   questionsContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    width: '95%',
+    width: '100%',
+    backgroundColor: 'darkgreen',
   },
   optionsContainer: {
     flex: 1,
@@ -173,5 +169,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     alignContent: 'space-around',
+    backgroundColor: 'darkgreen',
   },
 });

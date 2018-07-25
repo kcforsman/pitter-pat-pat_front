@@ -78,6 +78,7 @@ export default class Element extends React.Component {
     const styles = {
       height: height,
       width: width,
+      alignSelf: 'center',
     };
 
     return styles;
@@ -87,17 +88,21 @@ export default class Element extends React.Component {
     const width = this.props.location == 'question'  || this.props.gameType == 'tapElement' ? 50 : 30;
     const height = this.props.location == 'question' || this.props.gameType == 'tapElement' ? 60 : 40;
     const fontSize = this.props.location == 'question' || this.props.gameType == 'tapElement' ? 36 : 30;
+    const fontColor = this.props.location == 'question' ? 'lightgreen' : 'darkgreen';
     const styles = {
-      color: 'lightgreen',
+      color: fontColor,
       textAlign: 'center',
-      textAlignVertical: 'center',
       fontSize: fontSize,
       fontFamily: 'Chalkduster',
       fontWeight: 'bold',
       height: height,
       width: width,
     };
-
+    if (this.props.location == 'question') {
+      styles.alignSelf = 'center';
+    } else {
+      styles.alignItems = 'center';
+    }
     return styles;
   };
 
@@ -115,7 +120,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
     width: '100%',
     height: '100%',
   }

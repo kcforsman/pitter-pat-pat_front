@@ -17,6 +17,7 @@ export default class Phase extends React.Component {
           <View style={styles.homeLink}>
             <HomeLinkContainer title="Home" onLinkPress={this.props.changeView}/>
           </View>
+          <View style={styles.whiteSpace}></View>
           <CurrentGameBoard gameDirections="Complete the Pattern" />
         </View>
     );
@@ -38,4 +39,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1.0,
     shadowColor: 'darkgreen',
   },
+  whiteSpace: {
+    height: '3%',
+  }
 });

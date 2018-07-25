@@ -16,8 +16,8 @@ export default class Logo extends React.Component {
   }
   render() {
     return (
-      <TouchableOpacity style={{width: 65, height: 55}} onPress={this.onLinkPress}>
-        <Image source={require('../images/Home.png')} style={{width: 65, height: 55}}/>
+      <TouchableOpacity style={{width: 55, height: 40}} onPress={this.onLinkPress}>
+        <Image source={require('../images/Home.png')} style={{width: 55, height: 40}}/>
       </TouchableOpacity>
     )
   }
