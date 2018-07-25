@@ -65,7 +65,6 @@ export default class GameBoard extends React.Component {
     const style = {
       width: width,
       height: 50,
-      alignItems: 'center',
     };
     return style;
   };
