@@ -109,7 +109,17 @@ export default class GameBoard extends React.Component {
           <View style={ styles.optionsContainer }>
             { this.renderChoicePatterns() }
           </View>
-          <View style={{height: '3%', width: '100%', backgroundColor: 'darkgreen'}}></View>
+          <View style={
+            {
+              height: '3%',
+              width: '100%',
+              backgroundColor: 'darkgreen',
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30}
+            }>
+          </View>
+          <View style={{height: '2%', width: '100%'}}>
+          </View>
         </View>
       );
     } else {
@@ -159,6 +169,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     backgroundColor: 'darkgreen',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   optionsContainer: {
     flex: 1,

@@ -48,9 +48,8 @@ const styles = StyleSheet.create({
     height: '95%',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowOffset: {width: 5, height: 5},
-    shadowOpacity: 1.0,
-    shadowColor: 'darkgreen',
+    backgroundColor: 'darkgreen',
+    borderRadius: 25,
   },
   navContainer: {
     flex: 1,
