@@ -82,15 +82,16 @@ export default class GameBoard extends React.Component {
               <View style={ this.questionStyles(this.props.pattern.questionSequences[0].length) }>
                 <Pattern pattern={ mainQuestion } location="question" />
               </View>
-              <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+              <View style={{flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
                 <View style={ this.questionStyles(length) }>
                   <Pattern pattern={ questionElements } location="answerKey" />
                 </View>
-                <Text>=</Text>
+                <Text style={{color: 'lightgreen', fontFamily: 'Chalkduster', fontSize: 26,}}>=</Text>
                 <View style={ this.questionStyles(length) }>
                   <Pattern pattern={ answerElements } location="answerKey" />
                 </View>
               </View>
+              <View style={{height: '8%'}}></View>
             </View>
           );
     } else {
