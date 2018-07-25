@@ -13,7 +13,7 @@ export default class Element extends React.Component {
   renderElement = () => {
     if (this.props.type === 'Letter' || this.props.type === 'Question') {
       return <Text style={ this.setTextStyles() }>{ this.props.element.symbol }</Text>;
-    } else if (this.props.type === 'Color'){
+    } else if (this.props.type === 'Color') {
       switch(this.props.element.color) {
         case "Red":
           return <Image style={ this.setImgStyles() } source={require("../images/cats/RedCat.png")} />;
@@ -88,7 +88,7 @@ export default class Element extends React.Component {
     const width = this.props.location == 'question'  || this.props.gameType == 'tapElement' ? 50 : 30;
     const height = this.props.location == 'question' || this.props.gameType == 'tapElement' ? 60 : 40;
     const fontSize = this.props.location == 'question' || this.props.gameType == 'tapElement' ? 36 : 30;
-    const fontColor = this.props.location == 'question' ? 'lightgreen' : 'darkgreen';
+    const fontColor = this.props.location == 'question' || this.props.location == 'answerKey'? 'lightgreen' : 'darkgreen';
     const styles = {
       color: fontColor,
       textAlign: 'center',
@@ -98,7 +98,7 @@ export default class Element extends React.Component {
       height: height,
       width: width,
     };
-    if (this.props.location == 'question') {
+    if (this.props.location == 'question' || this.props.location == 'answerKey') {
       styles.alignSelf = 'center';
     } else {
       styles.alignItems = 'center';

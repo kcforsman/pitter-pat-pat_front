@@ -47,27 +47,67 @@ export default class GameBoard extends React.Component {
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       width: 75 * patternLength,
+      height: '50%',
     }
     return style;
   }
 
   renderQuestionPatterns = () => {
-    return(
-      this.props.pattern.questionSequences.map( (sequence, index) => {
-        const pattern = {
-          patternSequence: this.props.pattern.questionSequences[index],
-          types: this.props.pattern.questionTypes,
-          elements: this.props.pattern.questionElements,
-        }
-        return(
-          <View  key={ index } style={ this.questionStyles(this.props.pattern.questionSequences[index].length) }>
-            <Pattern pattern={ pattern } location="question" />
-          </View>
-        );
-      })
-    )
+    if (this.props.phaseId == 2) {
+          const mainQuestion = {
+            patternSequence: this.props.pattern.questionSequences[0],
+            types: this.props.pattern.questionTypes,
+            elements: this.props.pattern.questionElements,
+          };
+          const comparisonSequence = [];
+          const length = this.props.pattern.questionElements.length
+          for (let i = 0; i < length; i++) {
+            comparisonSequence.push(i);
+          }
+
+          const questionElements = {
+            patternSequence: comparisonSequence,
+            types: this.props.pattern.questionTypes,
+            elements: this.props.pattern.questionElements,
+          };
+          const answerElements = {
+            patternSequence: comparisonSequence,
+            types: this.props.pattern.answerTypes,
+            elements: this.props.pattern.answerElements,
+          }
+          return(
+            <View style={ styles.questionsContainer }>
+              <View style={ this.questionStyles(this.props.pattern.questionSequences[0].length) }>
+                <Pattern pattern={ mainQuestion } location="question" />
+              </View>
+              <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+                <View style={ this.questionStyles(length) }>
+                  <Pattern pattern={ questionElements } location="answerKey" />
+                </View>
+                <Text>=</Text>
+                <View style={ this.questionStyles(length) }>
+                  <Pattern pattern={ answerElements } location="answerKey" />
+                </View>
+              </View>
+            </View>
+          );
+    } else {
+      return(
+        this.props.pattern.questionSequences.map( (sequence, index) => {
+          const pattern = {
+            patternSequence: this.props.pattern.questionSequences[index],
+            types: this.props.pattern.questionTypes,
+            elements: this.props.pattern.questionElements,
+          }
+          return(
+            <View  key={ index } style={ this.questionStyles(this.props.pattern.questionSequences[index].length) }>
+              <Pattern pattern={ pattern } location="question" />
+            </View>
+          );
+      }))
+    }
   };
 
   optionStyles = (patternLength) => {
