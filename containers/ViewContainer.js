@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSetView: (view) => {
       dispatch(setView(view))
-    }
+    },
   }
 }
 const ViewContainer = connect(

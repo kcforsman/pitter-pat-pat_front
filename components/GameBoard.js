@@ -7,20 +7,24 @@ import LoadingScreen from './LoadingScreen'
 
 export default class GameBoard extends React.Component {
   static propTypes = {
-    pattern: PropTypes.object,
+    pattern: PropTypes.object.isRequired,
     isFetching: PropTypes.bool.isRequired,
     onAnswerPress: PropTypes.func.isRequired,
-    patternId: PropTypes.number,
-    phaseId: PropTypes.number,
-    gameDirections: PropTypes.string,
+    patternId: PropTypes.number.isRequired,
+    phaseId: PropTypes.number.isRequired,
+    gameDirections: PropTypes.string.isRequired,
+    currentScore: PropTypes.number.isRequired,
+    resetScore: PropTypes.func.isRequired,
+    incrementScore: PropTypes.func.isRequired,
   }
 
   isAnswer = (selectedSequence) => {
     const answerSequence = this.props.pattern.answerSequences[0];
     if (this.isSameSequence(selectedSequence, answerSequence)) {
-      Alert.alert("Correct", "Good Job! Purrrfect!");
+      this.props.incrementScore(this.props.currentScore);
       this.props.onAnswerPress(this.props.phaseId, this.props.patternId);
     } else {
+      this.props.resetScore();
       Alert.alert("Wrong!", "Try Again");
     }
   }
