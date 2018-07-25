@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import CurrentGameBoard from '../containers/CurrentGameBoard.js';
+import ScoreContainer from '../containers/ScoreContainer';
 import HomeLinkContainer from '../containers/HomeLinkContainer.js'
 
 export default class Phase extends React.Component {
@@ -14,7 +15,8 @@ export default class Phase extends React.Component {
   render() {
     return (
         <View style={styles.phaseContainer} >
-          <View style={styles.homeLink}>
+          <View style={styles.header}>
+            <ScoreContainer />
             <HomeLinkContainer title="Home" onLinkPress={this.props.changeView}/>
           </View>
           <View style={styles.whiteSpace}></View>
@@ -31,9 +33,9 @@ const styles = StyleSheet.create({
     width: '95%',
     height: '95%',
   },
-  homeLink: {
+  header: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     marginTop: 10,
     shadowOffset: {width: 3, height: 3},
     shadowOpacity: 1.0,

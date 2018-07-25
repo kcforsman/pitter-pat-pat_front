@@ -5,7 +5,9 @@ import {
   RECEIVE_FIRST_PATTERN,
   REQUEST_PATTERN,
   RECEIVE_PATTERN,
-  SET_GAME_DIRECTIONS
+  SET_GAME_DIRECTIONS,
+  INCREMENT_SCORE,
+  RESET_SCORE,
 } from '../actions/actions.js'
 
 const emptyState = {
@@ -80,12 +82,7 @@ function getPattern(
   }
 }
 
-function setGameDirections(
-  state = {
-    gameDirections: 'Complete the Pattern'
-  },
-  action
-) {
+function setGameDirections( state = { gameDirections: 'Complete the Pattern' }, action ) {
   switch (action.type) {
     case SET_GAME_DIRECTIONS:
       return Object.assign({}, state, {
@@ -96,4 +93,19 @@ function setGameDirections(
   }
 }
 
-export default combineReducers({setView, getPattern, setGameDirections});
+function setScore( state = { score: 0, }, action ) {
+  switch (action.type) {
+    case INCREMENT_SCORE:
+      return Object.assign({}, state, {
+        score: action.score,
+      })
+    case RESET_SCORE:
+      return Object.assign({}, state, {
+        score: action.score,
+      })
+    default:
+      return state
+  }
+}
+
+export default combineReducers({setView, getPattern, setGameDirections, setScore});
