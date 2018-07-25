@@ -38,6 +38,17 @@ export default class GameBoard extends React.Component {
     console.log({location: 'GameBoard Props', props: this.props.pattern});
   }
 
+  questionStyles = (patternLength) => {
+    const style = {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 75 * patternLength,
+    }
+    return style;
+  }
+
   renderQuestionPatterns = () => {
     return(
       this.props.pattern.questionSequences.map( (sequence, index) => {
@@ -47,20 +58,22 @@ export default class GameBoard extends React.Component {
           elements: this.props.pattern.questionElements,
         }
         return(
-          <Pattern key={ index } pattern={ pattern } location="question" />
+          <View  key={ index } style={ this.questionStyles(this.props.pattern.questionSequences[index].length) }>
+            <Pattern pattern={ pattern } location="question" />
+          </View>
         );
       })
     )
   };
 
-  optionStyles = () => {
+  optionStyles = (patternLength) => {
     let width = 0
     if (this.props.pattern.gameType === 'tapElement') {
       width = 50;
-    } else if (this.props.phaseId == 3) {
-      width = 150;
+    } else if (this.props.phaseId == 3){
+      width = 50 * patternLength;
     } else {
-      width = 290;
+      width = 37 * patternLength;
     }
     const style = {
       width: width,
@@ -80,7 +93,7 @@ export default class GameBoard extends React.Component {
         console.log(this.props.pattern.choiceSequences[index]);
         return(
           <TouchableOpacity
-            style={ this.optionStyles() }
+            style={ this.optionStyles(this.props.pattern.choiceSequences[index].length) }
             key={ index }
             onPress={() => this.isAnswer(this.props.pattern.choiceSequences[index])}
           >
@@ -100,6 +113,15 @@ export default class GameBoard extends React.Component {
     if (!this.props.isFetching) {
       return (
         <View style={ styles.boardContainer }>
+          <View style={
+            {
+              height: '3%',
+              width: '100%',
+              backgroundColor: 'darkgreen',
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30}
+            }>
+          </View>
           <View style={ styles.questionsContainer }>
             { this.renderQuestionPatterns() }
           </View>
@@ -167,10 +189,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     backgroundColor: 'darkgreen',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
   },
   optionsContainer: {
     flex: 1,
