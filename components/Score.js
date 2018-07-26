@@ -1,10 +1,11 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet, Alert} from 'react-native';
+import {TouchableOpacity, View, Text, StyleSheet, Alert} from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class Score extends React.Component {
   static propTypes = {
     score: PropTypes.number.isRequired,
+    highScore: PropTypes.number.isRequired,
   }
 
   alertScore = () => {
@@ -19,9 +20,15 @@ export default class Score extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={this.alertScore} style={{flexDirection: 'row', alignItems: 'center',}}>
-        <Text style={styles.text}>SCORE: { this.props.score }</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row',}}>
+        <TouchableOpacity onPress={this.alertScore} style={{flexDirection: 'row', alignItems: 'center',}}>
+          <Text style={styles.text}>SCORE: { this.props.score }</Text>
+        </TouchableOpacity>
+        <View style={{width: 90}}></View>
+        <TouchableOpacity onPress={this.alertScore} style={{flexDirection: 'row', alignItems: 'center',}}>
+          <Text style={styles.text}>HIGH SCORE: { this.props.highScore }</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
 }

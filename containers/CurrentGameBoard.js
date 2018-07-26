@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
     phaseId: state.getPattern.phaseId,
     patternId: state.getPattern.patternId,
     gameDirections: state.setGameDirections.gameDirections,
-    currentScore: state.setHighScores,
+    currentScore: state.setScore.score,
+    currentHighScore: state.setHighScores[state.getPattern.phaseId - 1],
   }
 }
 

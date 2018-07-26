@@ -110,14 +110,13 @@ function setScore( state = { score: 0, }, action ) {
 }
 
 function setHighScores( state = [0, 0, 0], action ) {
-  console.log(state)
   const newState = Object.assign([], state, state);
   switch (action.type) {
     case SET_HIGH_SCORE:
-      newState.setHighScores[action.phaseId - 1] = action.score;
-      return Object.assign({}, state, newState)
+      newState[action.phaseId - 1] = action.highScore;
+      return newState;
     default:
-      return state
+      return state;
   }
 }
 

@@ -5,6 +5,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     score: state.setScore.score,
+    highScore: state.setHighScores[state.getPattern.phaseId - 1],
   }
 }
 

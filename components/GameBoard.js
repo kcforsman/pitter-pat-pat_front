@@ -16,6 +16,8 @@ export default class GameBoard extends React.Component {
     currentScore: PropTypes.number.isRequired,
     resetScore: PropTypes.func.isRequired,
     incrementScore: PropTypes.func.isRequired,
+    setHighScore: PropTypes.func.isRequired,
+    currentHighScore: PropTypes.number.isRequired,
   }
 
   isAnswer = (selectedSequence) => {
@@ -24,6 +26,7 @@ export default class GameBoard extends React.Component {
       this.props.incrementScore(this.props.currentScore);
       this.props.onAnswerPress(this.props.phaseId, this.props.patternId);
     } else {
+      this.props.setHighScore(this.props.phaseId, this.props.currentScore, this.props.currentHighScore);
       this.props.resetScore();
       Alert.alert("Wrong!", "Try Again");
     }

@@ -15,10 +15,10 @@ const mapStateToProps = (state, props) => {
   return {
     title: props.title,
     view: props.view,
-    phaseId: props.phaseId,
+    phaseId: state.getPattern.phaseId,
     onPressSetView: props.onLinkPress,
     currentScore: state.setScore.score,
-    phaseHighScore: state.setHighScores[props.phaseId - 1]
+    phaseHighScore: state.setHighScores[state.getPattern.phaseId - 1]
   }
 }
 
@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     setHighScore: (phaseId, currentScore, currentHighScore) => {
       if ( currentScore > currentHighScore) {
+        console.log(currentScore);
         dispatch(setHighScore(phaseId, currentScore))
       }
     }
